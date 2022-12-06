@@ -1,0 +1,20 @@
+{
+  "name": "104-clock-in",
+  "version": "1.0.0",
+  "description": "執行 Github Action 即可打卡",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.k1dav.fun/k1dave6412/104-clock-in.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.28.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
