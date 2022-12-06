@@ -1,1 +1,6 @@
-image: gitpod/workspace-node-lts
+image: gitpod/workspace-python
+
+tasks:
+  - name: install package
+      init: |
+        pip3 install -r /workspace/104-clock-in/requirements.txt
