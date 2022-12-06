@@ -14,7 +14,7 @@ async def run(page: Page):
     await page.locator('input[data-qa-id="loginPassword"]').fill(os.environ["pwd"])
     await page.locator('button[data-qa-id="loginButton"]').click()
 
-    await page.screenshot(path="login.png")
+    await page.wait_for_timeout(60000)
     await page.context.storage_state(path=auth_file)
 
 
