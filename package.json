@@ -15,6 +15,9 @@
     "@playwright/test": "^1.28.1"
   },
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "playwright": "^1.28.1",
+    "playwright-extra": "^4.3.5",
+    "puppeteer-extra-plugin-stealth": "^2.11.1"
   }
 }
