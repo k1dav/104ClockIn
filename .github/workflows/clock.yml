@@ -1,0 +1,44 @@
+name: build and clock in
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install Package
+        run: pip install -r requirements.txt
+      - name: Install System Package
+        run: playwright install
+      - name: Get Cred JSON
+        id: get
+        uses: andymckay/get-gist-action@0.1
+        with:
+          gistURL: ${{ secrets.GIST_URL }}
+      - name: Save Cred JSON
+        run: cat ${{ steps.get.outputs.file }} > cred.json
+      - name: Start Clock In
+        run: python check.py
+        env:
+          ac: ${{ secrets.AC }}
+          pwd: ${{ secrets.PWD }}
+        
